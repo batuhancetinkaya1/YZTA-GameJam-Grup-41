@@ -25,23 +25,23 @@ public class PlayerDetectionControl : MonoBehaviour
         }
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("EndDoor"))
-    //    {
-    //        if (m_playerCore.RespawnController.HasKey())
-    //        {
-    //            AudioManager.Instance.PlaySFX("Victory");
-    //            PlayerPrefs.SetString("ArenaMode", "PVB");
-    //            UIManager.Instance.LoadFightScene();
-    //        }
-    //    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("EndDoor"))
+        {
+            if (m_playerCore.RespawnController.HasKey())
+            {
+                AudioManager.Instance.PlaySFX("Victory");
+                PlayerPrefs.SetString("ArenaMode", "PVB");
+                UIManager.Instance.LoadFightScene();
+            }
+        }
 
-    //    if (collision.CompareTag("DiePoint"))
-    //    {
-    //        m_playerCore.HealthManager.ReceiveDamage(m_playerCore.HealthManager.CurrentHealth);
-    //    }
-    //}
+        if (collision.CompareTag("DiePoint"))
+        {
+            m_playerCore.HealthManager.ReceiveDamage(m_playerCore.HealthManager.CurrentHealth);
+        }
+    }
 
     // Melee sensor boyutunu güncelleyebiliriz
     public void UpdateMeleeSensorScale(int facingDir)

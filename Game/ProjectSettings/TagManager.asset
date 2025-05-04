@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Grid
+  - DiePoint
+  - EndDoor
+  - EndPoint
   layers:
   - Default
   - TransparentFX
@@ -17,8 +20,8 @@ TagManager:
   - Sensor
   - RangeSensor
   - Grid
-  - 
-  - 
+  - DiePoint
+  - EndDoor
   - 
   - 
   - 

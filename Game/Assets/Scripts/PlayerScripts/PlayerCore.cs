@@ -1,3 +1,4 @@
+﻿// PlayerCore.cs  – tam dosya
 using UnityEngine;
 
 public class PlayerCore : MonoBehaviour
@@ -6,7 +7,7 @@ public class PlayerCore : MonoBehaviour
     [SerializeField] private PlayerType m_playerType;
     public PlayerType PlayerType => m_playerType;
 
-    // Alt bile�enler
+    // ─────────────  Alt Bileşenler ─────────────
     public PlayerMovementController MovementController { get; private set; }
     public PlayerCombatController CombatController { get; private set; }
     public PlayerHealthManager HealthManager { get; private set; }
@@ -19,6 +20,9 @@ public class PlayerCore : MonoBehaviour
 
     public delegate void PlayerSpawnHandler();
     public static event PlayerSpawnHandler OnPlayerSpawn;
+
+    // **GLOBAL ÖLÜM OLAYI**
+    public static event System.Action OnAnyPlayerDeath;
 
     private void Awake()
     {
@@ -38,21 +42,19 @@ public class PlayerCore : MonoBehaviour
         HealthManager.Initialize(this);
     }
 
-    private void Start()
-    {
-        m_gameManager = GameManager.Instance;
-    }
+    private void Start() => m_gameManager = GameManager.Instance;
 
     public void OnPlayerDeath()
     {
-        // GameManager var m� kontrol
+        // **Ölüm sayacı için olayı tetikle**
+        OnAnyPlayerDeath?.Invoke();
+
         if (m_gameManager == null)
         {
-            Debug.LogWarning("GameManager yok, OnPlayerDeath() => Respawn veya GameOver �a�r�lamad�.");
+            Debug.LogWarning("GameManager yok, OnPlayerDeath() => Respawn veya GameOver çağrılamadı.");
             return;
         }
 
-        // FinalFight durumundaysa => GameOver
         if (m_gameManager.CurrentState == GameStates.FinalFight)
             m_gameManager.ChangeState(GameStates.GameOver);
         else

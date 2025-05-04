@@ -11,12 +11,12 @@ public class PlayerRespawn : MonoBehaviour
 
     private void Awake()
     {
-        var spawnPoint1 = GameObject.Find("Grid/SpawnPoints & EndPoint & DiePoints/SpawnPoint1");
+        var spawnPoint1 = GameObject.Find("Grid_MAP_1/Points/SpawnPoint");
         m_respawnPoint1 = spawnPoint1.transform;
-        var spawnPoint2 = GameObject.Find("Grid/SpawnPoints & EndPoint & DiePoints/SpawnPoint2");
-        m_respawnPoint2 = spawnPoint2.transform;
-        var spawnVisual = GameObject.Find("Grid/SpawnPoints & EndPoint & DiePoints/SpawnPoint2/Door");
-        m_spawnPoint2Visual = spawnVisual;
+        //var spawnPoint2 = GameObject.Find("Grid/SpawnPoints & EndPoint & DiePoints/SpawnPoint2");
+        //m_respawnPoint2 = spawnPoint2.transform;
+        //var spawnVisual = GameObject.Find("Grid/SpawnPoints & EndPoint & DiePoints/SpawnPoint2/Door");
+        //m_spawnPoint2Visual = spawnVisual;
 
         m_currentRespawnPoint = m_respawnPoint1;
         if (m_spawnPoint2Visual != null)

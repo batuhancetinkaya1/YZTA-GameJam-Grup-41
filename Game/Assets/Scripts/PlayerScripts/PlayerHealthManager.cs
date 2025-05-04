@@ -78,11 +78,11 @@ public class PlayerHealthManager : MonoBehaviour
             float deltaX = attackerTransform.position.x - transform.position.x;
             isFacingAttack = (deltaX * facingDirection) > 0;
         }
-        AudioManager.Instance.PlaySFXWithNewSource("Hurt", transform.position);
+        //AudioManager.Instance.PlaySFXWithNewSource("Hurt", transform.position);
         if (IsBlocking && isFacingAttack)
         {
             m_currentHealth -= damage / 5f;
-            AudioManager.Instance.PlaySFXWithNewSource("Shield", transform.position);
+            //AudioManager.Instance.PlaySFXWithNewSource("Shield", transform.position);
             m_playerCore.AnimControl.SetTriggerBlocked();
         }
         else
@@ -96,7 +96,7 @@ public class PlayerHealthManager : MonoBehaviour
 
         if (m_currentHealth <= 0)
         {
-            AudioManager.Instance.PlaySFXWithNewSource("Die", transform.position);
+            //AudioManager.Instance.PlaySFXWithNewSource("Die", transform.position);
             Die();
         }
     }
